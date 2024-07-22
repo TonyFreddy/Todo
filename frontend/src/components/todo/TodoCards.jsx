@@ -11,11 +11,11 @@ const TodoCards = ({ title, body }) => {
           {body.length > 77 ? `${body.substring(0, 77)}...` : body}
         </p>
       </div>
-      <div className="d-flex justify-content-around card-icon-head">
-        <div className="d-flex justify-content-center align-items-center">
+      <div className="d-flex justify-content-around ">
+        <div className="d-flex justify-content-center align-items-center card-icon-head px-2 py-1">
           <GrDocumentUpdate className="card-icons del" /> Update
         </div>
-        <div className="d-flex justify-content-center align-items-center card-icon-head">
+        <div className="d-flex justify-content-center align-items-center card-icon-head px-2 py-1 text-danger">
           <FaDeleteLeft className="card-icons " /> Delete
         </div>
       </div>

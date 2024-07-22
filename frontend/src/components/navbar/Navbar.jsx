@@ -2,8 +2,20 @@ import React from 'react';
 import '../navbar/Navbar.css';
 import { RiContactsBook2Fill } from "react-icons/ri";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { authActions } from "../../store/index";
+
 
 const Navbar = () => {
+  
+  const isloggedIn = useSelector((state) => state.isloggedIn);  
+  
+  const dispatch = useDispatch();
+  const logout = () =>{
+        sessionStorage.clear("id");
+        dispatch(authActions.logout());
+  } 
   return (
     <div>
       <nav className="navbar navbar-expand-lg">
@@ -31,7 +43,7 @@ const Navbar = () => {
                   Todo
                 </Link>
               </li>
-              <li className="nav-item mx-2">
+{(!isloggedIn && <><li className="nav-item mx-2">
                 <Link className="nav-link active btn-nav" aria-current="page" to="/signup">
                   SignUp
                 </Link>
@@ -41,11 +53,18 @@ const Navbar = () => {
                   SignIn
                 </Link>
               </li>
-              <li className="nav-item mx-2">
+              </>
+              )}
+       {isloggedIn && <li className="nav-item mx-2" onClick={logout}>
                 <Link className="nav-link active btn-nav " aria-current="page" to="#">
                   LogOut
                 </Link>
+                
               </li>
+              
+              }
+              
+              
               <li className="nav-item mx-2">
                 <Link className="nav-link active" aria-current="page" to="#">
                   <img className="img-fluid user-png" 
