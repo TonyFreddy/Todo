@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaDeleteLeft } from "react-icons/fa6";
 import { GrDocumentUpdate } from "react-icons/gr";
 
-const TodoCards = ({ title, body }) => {
+const TodoCards = ({ title, body, id, delid, updateTask }) => {
   return (
     <div className="p-3 todo-card">
       <div>
@@ -12,10 +12,14 @@ const TodoCards = ({ title, body }) => {
         </p>
       </div>
       <div className="d-flex justify-content-around ">
-        <div className="d-flex justify-content-center align-items-center card-icon-head px-2 py-1">
+        <div className="d-flex justify-content-center align-items-center card-icon-head px-2 py-1" 
+          onClick={updateTask}>
           <GrDocumentUpdate className="card-icons del" /> Update
         </div>
-        <div className="d-flex justify-content-center align-items-center card-icon-head px-2 py-1 text-danger">
+        <div className="d-flex justify-content-center align-items-center card-icon-head px-2 py-1 text-danger" 
+          onClick={() => {
+            delid(id);
+          }}>
           <FaDeleteLeft className="card-icons " /> Delete
         </div>
       </div>
